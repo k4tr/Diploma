@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "500547585307",
+    "project_id": "kelineyt-acb8b",
+    "storage_bucket": "kelineyt-acb8b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:500547585307:android:aad713f35e1437f91e7fbe",
+        "android_client_info": {
+          "package_name": "com.example.kelineyt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClsfMeJs9wiHSgAaT7Avbsmb3wVk4aKdQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
