@@ -41,22 +41,18 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
 
-
-
             <TextView
                 android:id="@+id/tvBestDeals"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/poppins_thin"
-                android:text="Best deals"
+                android:text="Хит продаж"
                 android:textColor="@color/black"
                 android:textSize="22sp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rvSpecialProducts"/>
-
-
+                app:layout_constraintTop_toBottomOf="@id/rvSpecialProducts" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvBestDealsProducts"
@@ -74,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/poppins_thin"
-                android:text="Best Products"
+                android:text="Скидки"
                 android:textColor="@color/black"
                 android:textSize="22sp"
                 app:layout_constraintStart_toStartOf="@id/rvSpecialProducts"

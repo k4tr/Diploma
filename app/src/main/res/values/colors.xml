@@ -10,7 +10,7 @@
 
     <color name="g_gray700">#666666</color>
     <color name="g_black">#171717</color>
-    <color name="g_blue">#000DAE</color>
+    <color name="g_blue">#151A22</color>
     <color name="g_white">#F5F8FA</color>
     <color name="g_dark_blue">#000759</color>
     <color name="g_blue_gray200">#97AABD</color>
@@ -23,6 +23,7 @@
     <color name="g_gray500">#969899</color>
     <color name="g_orange_yellow">#F8BA00</color>
     <color name="g_green">#11FF00</color>
+    <color name="blue_dark">#0F1742</color>
 
 
 </resources>

@@ -46,6 +46,7 @@ class ShoppingActivity : AppCompatActivity() {
                 }
             }
         }
+
     }
 
 }

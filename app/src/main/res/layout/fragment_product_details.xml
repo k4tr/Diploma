@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 style="@style/h3"
                 android:textColor="@color/g_gray700"
-                android:text="$6000"/>
+                android:text="6000₽"/>
 
         </LinearLayout>
 
@@ -79,7 +79,7 @@
             app:layout_constraintStart_toStartOf="@id/linearTitlePrice"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:text="$6000"/>
+            android:text="6000₽"/>
 
         <View
             android:id="@+id/topLine"
@@ -157,7 +157,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="45dp"
             android:layout_marginBottom="20dp"
-            android:text="Add to cart"
+            android:text="В корзину"
             app:spinning_bar_color="@color/white"/>
 
 

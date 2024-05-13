@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_light"
-            android:text="$50"
+            android:text="50₽"
             android:textColor="@color/black"
             android:textSize="10sp"
             android:textStyle="bold"
@@ -61,8 +61,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageCartProductColor"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginTop="5dp"
             android:src="@color/g_blue"
             app:layout_constraintStart_toStartOf="@id/tvProductCartPrice"
@@ -70,8 +70,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageCartProductSize"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginStart="5dp"
             android:src="@color/g_blue_gray200"
             app:layout_constraintStart_toEndOf="@id/imageCartProductColor"

@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Settings"
+                android:text="Настройки"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="3dp"
-                    android:text="Name"
+                    android:text="Имя"
                     app:layout_constraintStart_toEndOf="@id/imageUser"
                     app:layout_constraintTop_toTopOf="@+id/imageUser" />
 
@@ -76,7 +76,7 @@
                     style="@style/SmallTextViewThin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="edit personal details"
+                    android:text="Редактировать данные"
                     app:layout_constraintTop_toBottomOf="@id/tvUserName"
                     app:layout_constraintStart_toStartOf="@+id/tvUserName" />
 
@@ -102,7 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Orders"
+                android:text="Заказы"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintTop_toBottomOf="@id/constraintProfile" />
 
@@ -138,7 +138,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="All orders"
+                        android:text="Все заказы"
                         android:textColor="@color/g_gray700"
                         android:textStyle="bold"
                         android:layout_marginStart="15dp"
@@ -175,7 +175,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Track Orders"
+                        android:text="Отследить заказы"
                         android:textColor="@color/g_gray700"
                         android:textStyle="bold"
                         android:layout_marginStart="15dp"
@@ -211,7 +211,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Billing"
+                        android:text="Счета"
                         android:textColor="@color/g_gray700"
                         android:textStyle="bold"
                         android:layout_marginStart="15dp"
@@ -236,7 +236,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="Notifications"
+                android:text="Уведомления"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintTop_toBottomOf="@id/linearOrders" />
 
@@ -270,7 +270,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Notifications"
+                        android:text="Включить уведомления"
                         android:textColor="@color/g_gray700"
                         android:textStyle="bold"
                         android:layout_marginStart="15dp"
@@ -298,7 +298,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Regional"
+                android:text="Остальное"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintTop_toBottomOf="@id/linearNotifications" />
 
@@ -339,7 +339,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="15dp"
                         android:layout_weight="1"
-                        android:text="Logout"
+                        android:text="Выйти из аккаунта"
                         android:textColor="@color/g_gray700"
                         android:textStyle="bold" />
 

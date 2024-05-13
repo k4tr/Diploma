@@ -25,8 +25,8 @@
 
     <ImageView
         android:id="@+id/imagePicked"
-        android:layout_width="18sp"
-        android:layout_height="18sp"
+        android:layout_width="20sp"
+        android:layout_height="20sp"
         android:src="@drawable/ic_picked"
         app:layout_constraintStart_toStartOf="@id/imageColor"
         app:layout_constraintTop_toTopOf="@id/imageColor"

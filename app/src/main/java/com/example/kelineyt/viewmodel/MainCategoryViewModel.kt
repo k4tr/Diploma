@@ -40,8 +40,8 @@ class MainCategoryViewModel @Inject constructor(
         viewModelScope.launch {
             _specialProducts.emit(Resource.Loading())
         }
-        firestore.collection("Products")
-            .whereEqualTo("category", "Special Products").get().addOnSuccessListener { result ->
+        firestore.collection("Products") //это раздел акций сверху над "хит продаж"
+            .whereEqualTo("category", "News").get().addOnSuccessListener { result ->
                 val specialProductsList = result.toObjects(Product::class.java)
                 viewModelScope.launch {
                     _specialProducts.emit(Resource.Success(specialProductsList))
@@ -58,7 +58,7 @@ class MainCategoryViewModel @Inject constructor(
         viewModelScope.launch {
             _bestDealsProducts.emit(Resource.Loading())
         }
-        firestore.collection("Products").whereEqualTo("category", "Best Deals").get()
+        firestore.collection("Products").whereEqualTo("category", "Хит продаж").get()
             .addOnSuccessListener { result ->
                 val bestDealsProducts = result.toObjects(Product::class.java)
                 viewModelScope.launch {
@@ -75,7 +75,7 @@ class MainCategoryViewModel @Inject constructor(
         if (!pagingInfo.isPagingEnd) {
             viewModelScope.launch {
                 _bestProducts.emit(Resource.Loading())
-                firestore.collection("Products").limit(pagingInfo.bestProductsPage * 10).get()
+                firestore.collection("Products").whereEqualTo("category", "Скидки").limit(pagingInfo.bestProductsPage * 10).get()
                     .addOnSuccessListener { result ->
                         val bestProducts = result.toObjects(Product::class.java)
                         pagingInfo.isPagingEnd = bestProducts == pagingInfo.oldBestProducts
