@@ -52,7 +52,6 @@ class AddressViewModel @Inject constructor(
         return address.addressTitle.trim().isNotEmpty() &&
                 address.city.trim().isNotEmpty() &&
                 address.phone.trim().isNotEmpty() &&
-                address.state.trim().isNotEmpty() &&
                 address.fullName.trim().isNotEmpty() &&
                 address.street.trim().isNotEmpty()
     }

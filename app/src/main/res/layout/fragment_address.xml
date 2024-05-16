@@ -59,7 +59,7 @@
         android:background="@drawable/white_background"
         android:fontFamily="@font/poppins_light"
         android:gravity="start|center_vertical"
-        android:hint=""
+        android:hint="Тут надо название алреса"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:singleLine="true"
@@ -76,7 +76,7 @@
         android:background="@drawable/white_background"
         android:fontFamily="@font/poppins_light"
         android:gravity="start|center_vertical"
-        android:hint="Полное имя"
+        android:hint="Ваше полное имя"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:singleLine="true"
@@ -120,11 +120,10 @@
             android:background="@drawable/white_background"
             android:fontFamily="@font/poppins_light"
             android:gravity="start|center_vertical"
-            android:hint="City"
+            android:hint="Город"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:singleLine="true"
-            android:textStyle="bold" />
+            android:singleLine="true" />
 
         <EditText
             android:id="@+id/edState"
@@ -136,11 +135,10 @@
             android:background="@drawable/white_background"
             android:fontFamily="@font/poppins_light"
             android:gravity="start|center_vertical"
-            android:hint="State"
+            android:hint="Район"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:singleLine="true"
-            android:textStyle="bold" />
+            android:singleLine="true" />
     </LinearLayout>
 
     <EditText

@@ -121,7 +121,7 @@ class BillingFragment : Fragment() {
                     is Resource.Success -> {
                         binding.buttonPlaceOrder.revertAnimation()
                         findNavController().navigateUp()
-                        Snackbar.make(requireView(), "Your order was placed", Snackbar.LENGTH_LONG)
+                        Snackbar.make(requireView(), "Ваш заказ оформлен", Snackbar.LENGTH_LONG)
                             .show()
                     }
 
@@ -140,12 +140,12 @@ class BillingFragment : Fragment() {
         billingProductsAdapter.differ.submitList(products)
 
 
-        binding.tvTotalPrice.text = "$ $totalPrice"
+        binding.tvTotalPrice.text = "$totalPrice ₽"
 
 
         binding.buttonPlaceOrder.setOnClickListener {
             if (selectedAddress == null) {
-                Toast.makeText(requireContext(), "Please select and address", Toast.LENGTH_SHORT)
+                Toast.makeText(requireContext(), "Пожалуйста, выберите адрес доставки", Toast.LENGTH_SHORT)
                     .show()
                 return@setOnClickListener
             }
@@ -156,12 +156,12 @@ class BillingFragment : Fragment() {
 
     private fun showOrderConfirmationDialog() {
         val alertDialog = AlertDialog.Builder(requireContext()).apply {
-            setTitle("Order items")
-            setMessage("Do you want to order your cart items?")
-            setNegativeButton("Cancel") { dialog, _ ->
+            setTitle("Подтвердите действие")
+            setMessage("Оформить заказ?")
+            setNegativeButton("Отмена") { dialog, _ ->
                 dialog.dismiss()
             }
-            setPositiveButton("Yes") { dialog, _ ->
+            setPositiveButton("Да") { dialog, _ ->
                 val order = Order(
                     OrderStatus.Ordered.status,
                     totalPrice,

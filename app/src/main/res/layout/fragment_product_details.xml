@@ -78,8 +78,7 @@
             app:layout_constraintTop_toBottomOf="@id/linearTitlePrice"
             app:layout_constraintStart_toStartOf="@id/linearTitlePrice"
             android:textSize="12sp"
-            android:textStyle="bold"
-            android:text="6000₽"/>
+            android:textStyle="bold"/>
 
         <View
             android:id="@+id/topLine"

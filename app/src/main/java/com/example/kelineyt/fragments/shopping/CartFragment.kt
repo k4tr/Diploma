@@ -45,7 +45,7 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
             viewModel.productsPrice.collectLatest { price ->
                 price?.let {
                     totalPrice = it
-                    binding.tvTotalPrice.text = "$ $price"
+                    binding.tvTotalPrice.text = "$price ₽"
                 }
             }
         }
@@ -75,12 +75,12 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
         lifecycleScope.launchWhenStarted {
             viewModel.deleteDialog.collectLatest {
                 val alertDialog = AlertDialog.Builder(requireContext()).apply {
-                    setTitle("Delete item from cart")
-                    setMessage("Do you want to delete this item from your cart?")
-                    setNegativeButton("Cancel") { dialog, _ ->
+                    setTitle("Удалить товар из корзины")
+                    setMessage("Вы хотите удалить этот товар?")
+                    setNegativeButton("Отмена") { dialog, _ ->
                         dialog.dismiss()
                     }
-                    setPositiveButton("Yes") { dialog, _ ->
+                    setPositiveButton("Удалить") { dialog, _ ->
                         viewModel.deleteCartProduct(it)
                         dialog.dismiss()
                     }
