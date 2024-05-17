@@ -72,7 +72,7 @@ class ProductDetailsFragment : Fragment() {
         binding.buttonAddToCart.setOnClickListener {
             viewModel.addUpdateProductInCart(CartProduct(product, 1, selectedColor, selectedSize))
         }
-
+            //анимация загрузочной кнопки
         lifecycleScope.launchWhenStarted {
             viewModel.addToCart.collectLatest {
                 when (it) {
@@ -83,6 +83,7 @@ class ProductDetailsFragment : Fragment() {
                     is Resource.Success -> {
                         binding.buttonAddToCart.revertAnimation()
                         binding.buttonAddToCart.setBackgroundColor(resources.getColor(R.color.black))
+                        binding.buttonAddToCart.setText("Товар добавлен")
                     }
 
                     is Resource.Error -> {
@@ -96,7 +97,7 @@ class ProductDetailsFragment : Fragment() {
 
         binding.apply {
             tvProductName.text = product.name
-            tvProductPrice.text = "$ ${product.price}"
+            tvProductPrice.text = "${product.price} ₽"
             tvProductDescription.text = product.description
 
             if (product.colors.isNullOrEmpty())

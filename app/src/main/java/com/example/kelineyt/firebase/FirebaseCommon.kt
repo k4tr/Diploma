@@ -1,6 +1,7 @@
 package com.example.kelineyt.firebase
 
 import com.example.kelineyt.data.CartProduct
+import com.example.kelineyt.data.FavProduct
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -11,7 +12,16 @@ class FirebaseCommon(
 
     private val cartCollection =
         firestore.collection("user").document(auth.uid!!).collection("cart")
-
+    private val favCollection =
+        firestore.collection("user").document(auth.uid!!).collection("favourite")
+    fun addProductToFav(favProduct: FavProduct, onResult: (FavProduct?, Exception?) -> Unit) {
+        cartCollection.document().set(favProduct)
+            .addOnSuccessListener {
+                onResult(favProduct, null)
+            }.addOnFailureListener {
+                onResult(null, it)
+            }
+    }
     fun addProductToCart(cartProduct: CartProduct, onResult: (CartProduct?, Exception?) -> Unit) {
         cartCollection.document().set(cartProduct)
             .addOnSuccessListener {
