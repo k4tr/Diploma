@@ -18,6 +18,7 @@ import com.example.kelineyt.adapters.ColorsAdapter
 import com.example.kelineyt.adapters.SizesAdapter
 import com.example.kelineyt.adapters.ViewPager2Images
 import com.example.kelineyt.data.CartProduct
+import com.example.kelineyt.data.FavProduct
 import com.example.kelineyt.data.Product
 import com.example.kelineyt.databinding.FragmentProductDetailsBinding
 import com.example.kelineyt.util.Resource
@@ -35,6 +36,7 @@ class ProductDetailsFragment : Fragment() {
     private val sizesAdapter by lazy { SizesAdapter() }
     private val colorsAdapter by lazy { ColorsAdapter() }
     private var selectedColor: Int? = null
+    private var description: String? = null
     private var selectedSize: String? = null
     private val viewModel by viewModels<DetailsViewModel>()
 
@@ -71,6 +73,21 @@ class ProductDetailsFragment : Fragment() {
 
         binding.buttonAddToCart.setOnClickListener {
             viewModel.addUpdateProductInCart(CartProduct(product, 1, selectedColor, selectedSize))
+        }
+        binding.imgFavorite.setOnClickListener {
+            viewModel.addUpdateProductInFav(FavProduct(product, description))
+        }
+            //делает кнопку красным при нажатии
+        lifecycleScope.launchWhenStarted {
+            viewModel.addToFav.collectLatest {
+                when (it){
+                    is Resource.Success ->{
+                        binding.imgFavorite.setBackgroundColor(resources.getColor(R.color.g_light_red))
+                    }
+
+                    else -> Unit
+                }
+            }
         }
             //анимация загрузочной кнопки
         lifecycleScope.launchWhenStarted {

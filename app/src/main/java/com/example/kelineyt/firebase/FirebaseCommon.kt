@@ -13,9 +13,9 @@ class FirebaseCommon(
     private val cartCollection =
         firestore.collection("user").document(auth.uid!!).collection("cart")
     private val favCollection =
-        firestore.collection("user").document(auth.uid!!).collection("favourite")
+        firestore.collection("user").document(auth.uid!!).collection("favorite")
     fun addProductToFav(favProduct: FavProduct, onResult: (FavProduct?, Exception?) -> Unit) {
-        cartCollection.document().set(favProduct)
+        favCollection.document().set(favProduct)
             .addOnSuccessListener {
                 onResult(favProduct, null)
             }.addOnFailureListener {

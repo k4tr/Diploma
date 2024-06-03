@@ -27,14 +27,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
+            <ImageButton
+                android:id="@+id/img_favorite"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:paddingTop="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline"
+                app:tint="@color/g_gray700" />
             <ImageView
                 android:id="@+id/imageClose"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="2dp"
+                android:layout_height="2dp"
                 android:src="@drawable/ic_close"
                 android:padding="5dp"
-                app:tint="@color/g_black"/>
-
+                app:tint="@color/white"/>
 
         </androidx.cardview.widget.CardView>
 

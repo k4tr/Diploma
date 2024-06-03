@@ -50,7 +50,7 @@ class CartViewModel @Inject constructor(
     }
 
 
-    private fun calculatePrice(data: List<CartProduct>): Float {
+    fun calculatePrice(data: List<CartProduct>): Float {
         return data.sumByDouble { cartProduct ->
             (cartProduct.product.offerPercentage.getProductPrice(cartProduct.product.price) * cartProduct.quantity).toDouble()
         }.toFloat()
@@ -120,6 +120,7 @@ class CartViewModel @Inject constructor(
                 viewModelScope.launch { _cartProducts.emit(Resource.Error(exception.message.toString())) }
         }
     }
+
 
 
 }
