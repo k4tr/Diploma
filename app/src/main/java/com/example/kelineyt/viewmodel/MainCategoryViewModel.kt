@@ -1,12 +1,17 @@
 package com.example.kelineyt.viewmodel
 
-import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kelineyt.data.Product
+import com.example.kelineyt.data.SliderModel
 import com.example.kelineyt.util.Resource
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,10 +22,9 @@ import javax.inject.Inject
 class MainCategoryViewModel @Inject constructor(
     private val firestore: FirebaseFirestore
 ) : ViewModel() {
-
+    private val firebaseDatabase = FirebaseDatabase.getInstance()
     private val _specialProducts = MutableStateFlow<Resource<List<Product>>>(Resource.Unspecified())
     val specialProducts: StateFlow<Resource<List<Product>>> = _specialProducts
-
     private val _bestDealsProducts =
         MutableStateFlow<Resource<List<Product>>>(Resource.Unspecified())
     val bestDealsProducts: StateFlow<Resource<List<Product>>> = _bestDealsProducts
@@ -52,7 +56,6 @@ class MainCategoryViewModel @Inject constructor(
                 }
             }
     }
-
 
     fun fetchBestDeals() {
         viewModelScope.launch {

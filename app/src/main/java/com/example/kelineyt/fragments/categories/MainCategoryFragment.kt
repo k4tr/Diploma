@@ -9,17 +9,25 @@ import android.widget.Toast
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
 import com.example.kelineyt.R
 import com.example.kelineyt.adapters.BestDealsAdapter
 import com.example.kelineyt.adapters.BestProductsAdapter
+import com.example.kelineyt.adapters.SliderAdapter
 import com.example.kelineyt.adapters.SpecialProductsAdapter
-import com.example.kelineyt.databinding.FragmentHomeBinding
+import com.example.kelineyt.adapters.ViewPager2Images
 import com.example.kelineyt.databinding.FragmentMainCategoryBinding
+import com.example.kelineyt.data.SliderModel
+import com.example.kelineyt.fragments.shopping.HomeFragmentArgs
+import com.example.kelineyt.fragments.shopping.ProductDetailsFragmentArgs
 import com.example.kelineyt.util.Resource
 import com.example.kelineyt.util.showBottomNavigationView
 import com.example.kelineyt.viewmodel.MainCategoryViewModel
@@ -30,13 +38,12 @@ private val TAG = "MainCategoryFragment"
 
 @AndroidEntryPoint
 class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
-
+    private val viewPagerAdapter by lazy { SliderAdapter() }
     private lateinit var binding: FragmentMainCategoryBinding
     private lateinit var specialProductsAdapter: SpecialProductsAdapter
     private lateinit var bestDealsAdapter: BestDealsAdapter
     private lateinit var bestProductsAdapter: BestProductsAdapter
     private val viewModel by viewModels<MainCategoryViewModel>()
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,13 +53,14 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         setupSpecialProductsRv()
         setupBestDealsRv()
         setupBestProducts()
-
         specialProductsAdapter.onClick = {
             val b = Bundle().apply { putParcelable("product",it) }
           findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment,b)
@@ -137,6 +145,7 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
                 viewModel.fetchBestProducts()
             }
         })
+
     }
 
     private fun setupBestProducts() {
@@ -180,5 +189,4 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
 
         showBottomNavigationView()
     }
-
 }
