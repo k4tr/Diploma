@@ -11,11 +11,12 @@ import com.bumptech.glide.Glide
 import com.example.kelineyt.data.CartProduct
 import com.example.kelineyt.data.FavProduct
 import com.example.kelineyt.databinding.CartProductItemBinding
+import com.example.kelineyt.databinding.ProductInFavBinding
 import com.example.kelineyt.databinding.ProductRvItemBinding
 import com.example.kelineyt.helper.getProductPrice
 class FavProductAdapter: RecyclerView.Adapter<FavProductAdapter.FavProductsViewHolder>() {
  //////////////это привязка элементов карточки товара.
-    inner class FavProductsViewHolder( val binding: ProductRvItemBinding) :
+    inner class FavProductsViewHolder( val binding: ProductInFavBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(favProduct: FavProduct) {
@@ -43,7 +44,7 @@ class FavProductAdapter: RecyclerView.Adapter<FavProductAdapter.FavProductsViewH
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavProductAdapter.FavProductsViewHolder {
         return FavProductsViewHolder(
-            ProductRvItemBinding.inflate(
+            ProductInFavBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )

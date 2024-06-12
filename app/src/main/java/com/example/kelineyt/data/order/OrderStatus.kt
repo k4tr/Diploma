@@ -2,29 +2,29 @@ package com.example.kelineyt.data.order
 
 sealed class OrderStatus(val status: String) {
 
-    object Ordered: OrderStatus("Ordered")
-    object Canceled: OrderStatus("Canceled")
-    object Confirmed: OrderStatus("Confirmed")
-    object Shipped: OrderStatus("Shipped")
-    object Delivered: OrderStatus("Delivered")
+    object Ordered: OrderStatus("Заказ оформлен")
+    object Canceled: OrderStatus("Заказ отменен")
+    object Confirmed: OrderStatus("Заказ подтвержден")
+    object Shipped: OrderStatus("Заказ доставляется")
+    object Delivered: OrderStatus("Заказ доставлен")
     object Returned: OrderStatus("Returned")
 }
 
 fun getOrderStatus(status: String): OrderStatus {
     return when (status) {
-        "Ordered" -> {
+        "Заказ оформлен" -> {
             OrderStatus.Ordered
         }
-        "Canceled" -> {
+        "Заказ отменен" -> {
             OrderStatus.Canceled
         }
-        "Confirmed" -> {
+        "Заказ подтвержден" -> {
             OrderStatus.Confirmed
         }
-        "Shipped" -> {
+        "Заказ доставляется" -> {
             OrderStatus.Shipped
         }
-        "Delivered" -> {
+        "Заказ доставлен" -> {
             OrderStatus.Delivered
         }
         else -> OrderStatus.Returned

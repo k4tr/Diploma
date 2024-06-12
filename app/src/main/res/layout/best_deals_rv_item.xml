@@ -19,11 +19,12 @@
         android:layout_width="200dp"
         android:layout_height="100dp">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/img_best_deal"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_marginStart="16dp"
+            app:shapeAppearanceOverlay="@style/corners"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

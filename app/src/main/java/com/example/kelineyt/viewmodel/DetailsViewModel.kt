@@ -1,20 +1,17 @@
 package com.example.kelineyt.viewmodel
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kelineyt.data.CartProduct
 import com.example.kelineyt.data.FavProduct
-import com.example.kelineyt.data.Product
 import com.example.kelineyt.firebase.FirebaseCommon
 import com.example.kelineyt.helper.getProductPrice
 import com.example.kelineyt.util.Resource
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
@@ -31,17 +28,62 @@ class DetailsViewModel @Inject constructor(
     private val _addToFav = MutableStateFlow<Resource<FavProduct>>(Resource.Unspecified())
     val addToCart = _addToCart.asStateFlow()
     val addToFav= _addToFav.asStateFlow()
+    private val _isProductInFav = MutableStateFlow<Boolean>(false)
+    val isProductInFav = _isProductInFav.asStateFlow()
+    private val _favProducts =
+        MutableStateFlow<Resource<List<FavProduct>>>(Resource.Unspecified())
+    val favProducts = _favProducts.asStateFlow()
+    private var favProductDocuments = emptyList<DocumentSnapshot>()
     ///////
-    fun addUpdateProductInFav(favProduct: FavProduct) {
+    fun isProductInFav(productId: String) {
+        firestore.collection("user").document(auth.uid!!).collection("favorite")
+            .whereEqualTo("product.id", productId).get()
+            .addOnSuccessListener { querySnapshot ->
+                _isProductInFav.value = !querySnapshot.isEmpty
+            }
+            .addOnFailureListener {
+                _isProductInFav.value = false
+            }
+    }
+
+
+    fun removeProductFromFav(productId: String) {
         viewModelScope.launch { _addToFav.emit(Resource.Loading()) }
-        firestore.collection("user").document(auth.uid!!).collection("favourite")
+        firestore.collection("user").document(auth.uid!!).collection("favorite")
+            .whereEqualTo("product.id", productId).get()
+            .addOnSuccessListener { querySnapshot ->
+                if (!querySnapshot.isEmpty) {
+                    val documentId = querySnapshot.documents.first().id
+                    firestore.collection("user").document(auth.uid!!).collection("favorite")
+                        .document(documentId).delete()
+//                            viewModelScope.launch {
+//                                _isProductInFav.emit(false)
+//                            }
+
+                }
+            }
+            .addOnFailureListener { exception ->
+                viewModelScope.launch { _addToFav.emit(Resource.Error(exception.message.toString())) }
+            }
+    }
+    fun addUpdateProductInFav(favProduct: FavProduct, i: Int) {
+        viewModelScope.launch { _addToFav.emit(Resource.Loading()) }
+        firestore.collection("user").document(auth.uid!!).collection("favorite")
+
             .whereEqualTo("product.id", favProduct.product.id).get()
             .addOnSuccessListener {
                 it.documents.let {
-                     //Add new product
-                    addNewFavProduct(favProduct)
+                    if (it.isEmpty()) {
+                        // Товар не найден в избранном, добавляем новый
+                        viewModelScope.launch { _addToFav.emit(Resource.Error("Товар добавлен в избранное")) }
 
+                        addNewFavProduct(favProduct)
+                    } else {
+                        // Товар уже есть в избранном
+                        viewModelScope.launch { _addToFav.emit(Resource.Error("Товар уже добавлен в избранное")) }
+                    }
                 }
+
             }.addOnFailureListener {
                 viewModelScope.launch { _addToFav.emit(Resource.Error(it.message.toString())) }
             }
@@ -76,8 +118,7 @@ class DetailsViewModel @Inject constructor(
             (favProduct.product.offerPercentage.getProductPrice(favProduct.product.price)).toDouble()
         }.toFloat()
     }
-    private val _favProducts = MutableStateFlow<Resource<List<FavProduct>>>(Resource.Unspecified())
-    val favProducts = _favProducts.asStateFlow()
+
     val productsPrice = favProducts.map {
         when (it) {
             is Resource.Success -> {

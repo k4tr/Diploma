@@ -12,9 +12,8 @@ import javax.inject.Inject
 import com.google.firebase.auth.FirebaseAuth as FirebaseAuth
 
 @HiltViewModel
-class LoginViewModel @Inject constructor() : ViewModel() {
+class LoginViewModel @Inject constructor(private val firebaseAuth: FirebaseAuth) : ViewModel() {
 
-    lateinit var firebaseAuth: FirebaseAuth
     private val _login = MutableSharedFlow<Resource<FirebaseUser>>()
     val login = _login.asSharedFlow()
 

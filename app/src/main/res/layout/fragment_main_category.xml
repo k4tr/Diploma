@@ -16,122 +16,130 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="395dp"
+                android:layout_height="139dp"
+                android:layout_marginTop="16dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:src="@drawable/banner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rvSpecialProducts" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="395dp"
+                android:layout_height="135dp"
+                android:layout_marginTop="52dp"
+                android:src="@drawable/banner"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.476"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageView3" />
 
             <ProgressBar
                 android:id="@+id/mainCategoryProgressbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:indeterminateTint="@color/g_gray700"
                 android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:indeterminateTint="@color/g_gray700" />
-
-
+                tools:ignore="MissingConstraints" />
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvSpecialProducts"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_width="400dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="20dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBestDealsProducts"
+                android:layout_width="358dp"
+                android:layout_height="86dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="70dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.105"
+                app:layout_constraintStart_toStartOf="@+id/imageView3"
+                app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="33dp"
+                android:src="@drawable/next"
+                app:layout_constraintStart_toEndOf="@+id/textView5"
+                app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="124dp"
+                android:layout_marginTop="28dp"
+                android:text="Все товары"
+                android:textColor="@color/g_gray500"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintStart_toEndOf="@+id/tvBestDeals"
+                app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
             <TextView
                 android:id="@+id/tvBestDeals"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="24sp"
+                android:layout_marginTop="16sp"
                 android:fontFamily="@font/poppins_thin"
                 android:text="Хит продаж"
                 android:textColor="@color/black"
                 android:textSize="22sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rvSpecialProducts" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvBestDealsProducts"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:layout_constraintStart_toStartOf="@id/rvSpecialProducts"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvBestDeals"/>
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewpagerSlider"
-                android:layout_width="380dp"
-                android:layout_height="107dp"
-                android:layout_marginTop="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.516"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rvBestDealsProducts" />
-
-            <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
-                android:layout_width="wrap_content"
-                android:id="@+id/slider"
-                android:layout_height="wrap_content"
-                app:dotsColor="@color/g_blue_gray200"
-                app:dotsCornerRadius="8dp"
-                app:dotsSize="7dp"
-                app:dotsSpacing="2dp"
-                app:dotsWidthFactor="2.5"
-                app:layout_constraintBottom_toTopOf="@+id/tvBestProducts"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/viewpagerSlider"
-                app:layout_constraintVertical_bias="0.816"
-                app:selectedDotColor="@color/g_light_red" />
+                app:layout_constraintStart_toStartOf="@+id/imageView3"
+                app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvBestProducts"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="15dp"
+                android:layout_width="353dp"
+                android:layout_height="224dp"
+                android:layout_marginTop="16dp"
+                android:paddingStart="12dp"
                 android:overScrollMode="never"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvBestProducts" />
+                app:layout_constraintHorizontal_bias="0.39"
+                app:layout_constraintStart_toStartOf="@+id/imageView5"
+                app:layout_constraintTop_toBottomOf="@+id/tvBestProducts" />
 
             <TextView
                 android:id="@+id/tvBestProducts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-
-                android:layout_marginTop="156dp"
+                android:layout_marginStart="24sp"
+                android:layout_marginTop="16sp"
                 android:fontFamily="@font/poppins_thin"
-                android:text="Скидки"
+                android:text="Специальные предложения"
                 android:textColor="@color/black"
                 android:textSize="22sp"
-                app:layout_constraintStart_toStartOf="@id/rvSpecialProducts"
-                app:layout_constraintTop_toBottomOf="@id/rvBestDealsProducts" />
+                app:layout_constraintStart_toStartOf="@+id/imageView5"
+                app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
             <ProgressBar
                 android:id="@+id/bestProductsProgressbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:indeterminateTint="@color/g_gray700"
                 android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginBottom="5dp"
-                android:indeterminateTint="@color/g_gray700" />
+                tools:ignore="MissingConstraints" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.core.widget.NestedScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

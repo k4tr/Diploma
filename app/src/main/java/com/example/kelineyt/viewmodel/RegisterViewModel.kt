@@ -1,5 +1,8 @@
 package com.example.kelineyt.viewmodel
 
+import android.widget.Toast
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kelineyt.data.User
@@ -25,7 +28,16 @@ class RegisterViewModel @Inject constructor(
 
     private val _register = MutableStateFlow<Resource<User>>(Resource.Unspecified())
     val register: Flow<Resource<User>> = _register
+    private val _showToast = MutableLiveData<String>()
+    val showToast: LiveData<String> get() = _showToast
 
+    fun registerUser() {
+        // Логика регистрации пользователя
+        // Если регистрация успешна или произошла ошибка
+        _showToast.value = "Регистрация успешна!"
+        // или
+        _showToast.value = "Ошибка регистрации!"
+    }
     private val _validation = Channel<RegisterFieldsState>()
     val validation = _validation.receiveAsFlow()
 
@@ -38,6 +50,7 @@ class RegisterViewModel @Inject constructor(
                 .addOnSuccessListener {
                     it.user?.let {
                         saveUserInfo(it.uid, user)
+
                     }
                 }.addOnFailureListener {
                     _register.value = Resource.Error(it.message.toString())
@@ -66,8 +79,7 @@ class RegisterViewModel @Inject constructor(
     private fun checkValidation(user: User, password: String): Boolean {
         val emailValidation = validateEmail(user.email)
         val passwordValidation = validatePassword(password)
-        val shouldRegister = emailValidation is RegisterValidation.Success &&
-                passwordValidation is RegisterValidation.Success
+        val shouldRegister = emailValidation is RegisterValidation.Success && passwordValidation is RegisterValidation.Success
 
         return shouldRegister
     }

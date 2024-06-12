@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kelineyt.R
 import com.example.kelineyt.adapters.BestProductsAdapter
 import com.example.kelineyt.databinding.FragmentBaseCategoryBinding
+import com.example.kelineyt.fragments.shopping.SpaceItemDecoration
 import com.example.kelineyt.util.showBottomNavigationView
 
 open class BaseCategoryFragment: Fragment(R.layout.fragment_base_category) {
@@ -88,16 +89,17 @@ open class BaseCategoryFragment: Fragment(R.layout.fragment_base_category) {
 
     private fun setupBestProductsRv() {
         binding.rvBestProducts.apply {
-            layoutManager =
-                GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
+            layoutManager = GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
             adapter = bestProductsAdapter
+            val recyclerView: RecyclerView = findViewById(com.example.kelineyt.R.id.rvBestProducts)
+            val spaceHeight = 20 // Высота отступов в пикселях
+            recyclerView.addItemDecoration(SpaceItemDecoration(spaceHeight))
         }
     }
 
     private fun setupOfferRv() {
         binding.rvOfferProducts.apply {
-            layoutManager =
-                LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+            layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
             adapter = offerAdapter
         }
     }

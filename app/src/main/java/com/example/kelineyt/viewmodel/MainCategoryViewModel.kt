@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kelineyt.data.Product
-import com.example.kelineyt.data.SliderModel
 import com.example.kelineyt.util.Resource
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

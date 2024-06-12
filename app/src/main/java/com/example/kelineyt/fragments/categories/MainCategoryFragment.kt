@@ -21,11 +21,9 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import com.example.kelineyt.R
 import com.example.kelineyt.adapters.BestDealsAdapter
 import com.example.kelineyt.adapters.BestProductsAdapter
-import com.example.kelineyt.adapters.SliderAdapter
 import com.example.kelineyt.adapters.SpecialProductsAdapter
 import com.example.kelineyt.adapters.ViewPager2Images
 import com.example.kelineyt.databinding.FragmentMainCategoryBinding
-import com.example.kelineyt.data.SliderModel
 import com.example.kelineyt.fragments.shopping.HomeFragmentArgs
 import com.example.kelineyt.fragments.shopping.ProductDetailsFragmentArgs
 import com.example.kelineyt.util.Resource
@@ -38,7 +36,6 @@ private val TAG = "MainCategoryFragment"
 
 @AndroidEntryPoint
 class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
-    private val viewPagerAdapter by lazy { SliderAdapter() }
     private lateinit var binding: FragmentMainCategoryBinding
     private lateinit var specialProductsAdapter: SpecialProductsAdapter
     private lateinit var bestDealsAdapter: BestDealsAdapter

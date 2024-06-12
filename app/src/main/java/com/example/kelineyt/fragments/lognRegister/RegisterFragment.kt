@@ -5,8 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.kelineyt.R
@@ -63,6 +65,11 @@ class RegisterFragment : Fragment() {
                     }
                     is Resource.Success -> {
                         binding.buttonRegisterRegister.revertAnimation()
+                        viewModel.showToast.observe(viewLifecycleOwner, Observer { message ->
+                            message?.let {
+                                Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+                            }
+                        })
                     }
                     is Resource.Error -> {
                         Log.e(TAG,it.message.toString())

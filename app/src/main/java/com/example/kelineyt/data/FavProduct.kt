@@ -6,9 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class FavProduct(
     val product: Product,
-    val description: String? = null,
-    val selectedColor: Int? = null,
-    val selectedSize: String? = null
+    val saveFavIndicator: Int? = null
 ): Parcelable {
-    constructor() : this(Product(), null,null, null)
+    constructor() : this(Product(),  1)
 }

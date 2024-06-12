@@ -69,11 +69,4 @@ class AccessoryFragment: BaseCategoryFragment() {
         }
     }
 
-    override fun onBestProductsPagingRequest() {
-
-    }
-
-    override fun onOfferPagingRequest() {
-
-    }
 }

@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "500547585307",
-    "project_id": "kelineyt-acb8b",
-    "storage_bucket": "kelineyt-acb8b.appspot.com"
+    "project_number": "141619046365",
+    "project_id": "decortime2-ef2fb",
+    "storage_bucket": "decortime2-ef2fb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:500547585307:android:aad713f35e1437f91e7fbe",
+        "mobilesdk_app_id": "1:141619046365:android:aef3a40e45659bf831b834",
         "android_client_info": {
           "package_name": "com.example.kelineyt"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyClsfMeJs9wiHSgAaT7Avbsmb3wVk4aKdQ"
+          "current_key": "AIzaSyDWWFusEIXmvJPu9_T_PxTC37QPaiP8irY"
         }
       ],
       "services": {

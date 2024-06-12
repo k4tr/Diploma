@@ -9,19 +9,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kelineyt.R
-import com.example.kelineyt.adapters.CartProductAdapter
 import com.example.kelineyt.adapters.FavProductAdapter
-import com.example.kelineyt.databinding.FragmentCartBinding
 import com.example.kelineyt.databinding.FragmentSearchBinding
 import com.example.kelineyt.util.Resource
 import com.example.kelineyt.util.VerticalItemDecoration
-import com.example.kelineyt.viewmodel.CartViewModel
 import com.example.kelineyt.viewmodel.FavoriteViewModel
 import kotlinx.coroutines.flow.collectLatest
+
 
 class SearchFragment: Fragment(R.layout.fragment_search) {
     private lateinit var binding: FragmentSearchBinding
@@ -36,6 +34,7 @@ class SearchFragment: Fragment(R.layout.fragment_search) {
         return binding.root
 
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
 
@@ -52,17 +51,17 @@ class SearchFragment: Fragment(R.layout.fragment_search) {
             viewModel.favProducts.collectLatest {
                 when (it) {
                     is Resource.Loading -> {
-                        binding.progressbarCart.visibility = View.VISIBLE
+//                        binding.progressbarCart.visibility = View.VISIBLE
                     }
                     is Resource.Success -> {
-                        binding.progressbarCart.visibility = View.INVISIBLE
+//                        binding.progressbarCart.visibility = View.INVISIBLE
 
 
                             favAdapter.differ.submitList(it.data)
 
                     }
                     is Resource.Error -> {
-                        binding.progressbarCart.visibility = View.INVISIBLE
+//                        binding.progressbarCart.visibility = View.INVISIBLE
                         Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                     }
                     else -> Unit
@@ -77,14 +76,16 @@ class SearchFragment: Fragment(R.layout.fragment_search) {
             FavRecycle.visibility = View.GONE
         }
     }
-
+//настройка карточек в избранных товарах
     private fun setupFavRv() {
 
         binding.FavRecycle.apply {
             layoutManager = GridLayoutManager(context, 2)
             adapter = favAdapter
             addItemDecoration(VerticalItemDecoration())
-
+            val recyclerView: RecyclerView = findViewById(com.example.kelineyt.R.id.FavRecycle)
+            val spaceHeight = 15 // Высота отступов в пикселях
+            recyclerView.addItemDecoration(SpaceItemDecoration(spaceHeight))
         }
     }
 

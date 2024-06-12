@@ -69,11 +69,11 @@ class TableFragment: BaseCategoryFragment() {
         }
     }
 
-    override fun onBestProductsPagingRequest() {
-
-    }
-
-    override fun onOfferPagingRequest() {
-
-    }
+//    override fun onBestProductsPagingRequest() {
+//
+//    }
+//
+//    override fun onOfferPagingRequest() {
+//
+//    }
 }

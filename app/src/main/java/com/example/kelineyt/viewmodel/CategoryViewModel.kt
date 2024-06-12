@@ -22,27 +22,27 @@ class CategoryViewModel constructor(
     val bestProducts = _bestProducts.asStateFlow()
 
     init {
-        fetchOfferProducts()
+//        fetchOfferProducts()
         fetchBestProducts()
     }
 
-    fun fetchOfferProducts() {
-        viewModelScope.launch {
-            _offerProducts.emit(Resource.Loading())
-        }
-        firestore.collection("Products").whereEqualTo("category", category.category)
-            .whereNotEqualTo("offerPercentage", null).get()
-            .addOnSuccessListener {
-                val products = it.toObjects(Product::class.java)
-                viewModelScope.launch {
-                    _offerProducts.emit(Resource.Success(products))
-                }
-            }.addOnFailureListener {
-                viewModelScope.launch {
-                    _offerProducts.emit(Resource.Error(it.message.toString()))
-                }
-            }
-    }
+//    fun fetchOfferProducts() {
+//        viewModelScope.launch {
+//            _offerProducts.emit(Resource.Loading())
+//        }
+//        firestore.collection("Products").whereEqualTo("category", category.category)
+//            .whereNotEqualTo("offerPercentage", null).get()
+//            .addOnSuccessListener {
+//                val products = it.toObjects(Product::class.java)
+//                viewModelScope.launch {
+//                    _offerProducts.emit(Resource.Success(products))
+//                }
+//            }.addOnFailureListener {
+//                viewModelScope.launch {
+//                    _offerProducts.emit(Resource.Error(it.message.toString()))
+//                }
+//            }
+//    }
 
     fun fetchBestProducts() {
         viewModelScope.launch {
