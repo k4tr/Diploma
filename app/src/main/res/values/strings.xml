@@ -2,4 +2,6 @@
     <string name="app_name">KelineYt</string>
     <string name="rightAddress">Ваше вдохновение\nдля ремонта\nв любое время</string>
     <string name="qulity">С нашей помощью вы создадите\nлучший интерьер</string>
+    <string name="Район">Район</string>
+    <string name="поиск">Поиск...</string>
 </resources>

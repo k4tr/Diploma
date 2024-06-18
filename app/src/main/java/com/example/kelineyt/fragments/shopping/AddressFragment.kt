@@ -1,9 +1,12 @@
 package com.example.kelineyt.fragments.shopping
 
+import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -17,6 +20,7 @@ import com.example.kelineyt.util.hideBottomNavigationView
 import com.example.kelineyt.viewmodel.AddressViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class AddressFragment : Fragment() {
@@ -65,33 +69,54 @@ class AddressFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+        binding.imageAddressClose.setOnClickListener{
+            findNavController().navigate(com.example.kelineyt.R.id.profileFragment)
+        }
         val address = args.address
+        binding.buttonDelelte.setOnClickListener{
+            lifecycleScope.launch{
+                viewModel.removeAdress(address!!.addressTitle)
+                findNavController().navigateUp()
+            }
+        }
+        super.onViewCreated(view, savedInstanceState)
+        // Настройка Spinner
+        val spinner: Spinner = binding.edState
+        val states = arrayOf("Выберите район", "Адмиралтейский", "Василеостровский", "Выборгский", "Калининский", "Кировский", "Колпинский","Красногвардейский","Красносельский","Центральный","Фрунзенский","Приморский","Петроградский","Невский","Московский")
+        val adapter = ArrayAdapter(requireContext(), R.layout.simple_spinner_item, states)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+
         if (address == null) {
             binding.buttonDelelte.visibility = View.GONE
         } else {
             binding.apply {
                 edAddressTitle.setText(address.addressTitle)
                 edFullName.setText(address.fullName)
-                edState.setText(address.street)
+                edStreet.setText(address.street)
                 edPhone.setText(address.phone)
                 edCity.setText(address.city)
-                edState.setText(address.state)
+                // Установите выбранное состояние в Spinner
+                val statePosition = adapter.getPosition(address.state)
+                spinner.setSelection(statePosition)
             }
         }
-
+        spinner.setSelection(0)
         binding.apply {
-            buttonSave.setOnClickListener {
+            buttonSave?.setOnClickListener {
                 val addressTitle = edAddressTitle.text.toString()
                 val fullName = edFullName.text.toString()
                 val street = edStreet.text.toString()
                 val phone = edPhone.text.toString()
                 val city = edCity.text.toString()
-                val state = edState.text.toString()
-                val address = Address(addressTitle, fullName, street, phone, city, state)
+                val state = spinner.selectedItem.toString() // Получите выбранное значение из Spinner
+                if (state == "Выберите район") {
+                    Toast.makeText(requireContext(), "Пожалуйста, выберите район", Toast.LENGTH_SHORT).show()
+                } else {
+                    val updatedAddress = Address(id = args.address?.id ?: "", addressTitle, fullName, street, phone, city, state)
+                    viewModel.saveOrUpdateAddress(updatedAddress)
 
-                viewModel.addAddress(address)
+                }
             }
         }
 

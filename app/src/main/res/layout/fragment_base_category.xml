@@ -13,14 +13,13 @@
 
         <ProgressBar
             android:id="@+id/offerProductsProgressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="14dp"
             android:indeterminateTint="@color/g_blue_gray200"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/rvOfferProducts"
-            app:layout_constraintBottom_toBottomOf="@id/rvOfferProducts"
             android:visibility="gone"
-            />
+            app:layout_constraintBottom_toBottomOf="@id/rvOfferProducts"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/rvOfferProducts" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvOfferProducts"
@@ -41,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/poppins_thin"
-            android:text="Лучшие предложения"
+            android:text="Товары в этой категории"
             android:textColor="@color/black"
             android:textSize="22sp"
             app:layout_constraintStart_toStartOf="@id/rvOfferProducts"

@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kelineyt.R
@@ -21,7 +20,7 @@ import com.example.kelineyt.viewmodel.FavoriteViewModel
 import kotlinx.coroutines.flow.collectLatest
 
 
-class SearchFragment: Fragment(R.layout.fragment_search) {
+class FavoriteFragment: Fragment(R.layout.fragment_search) {
     private lateinit var binding: FragmentSearchBinding
     private val favAdapter by lazy { FavProductAdapter() }
     private val viewModel by activityViewModels<FavoriteViewModel>()
@@ -46,7 +45,9 @@ class SearchFragment: Fragment(R.layout.fragment_search) {
             }
             findNavController().navigate(R.id.action_searchFragment_to_productDetailsFragment, b)
         }
-
+        binding.imageClose.setOnClickListener{
+            findNavController().navigate(R.id.homeFragment)
+        }
         lifecycleScope.launchWhenStarted {
             viewModel.favProducts.collectLatest {
                 when (it) {

@@ -5,6 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Address(
+    val id: String = "",
     val addressTitle: String,
     val fullName: String,
     val street: String,
@@ -13,5 +14,5 @@ data class Address(
     val state: String
 ): Parcelable {
 
-    constructor(): this("","","","","","")
+    constructor(): this("","","","","","","")
 }

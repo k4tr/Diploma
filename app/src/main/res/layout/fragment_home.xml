@@ -61,34 +61,51 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageButton
+                android:id="@+id/etSearch"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:scaleType="fitCenter"
+                android:background="@null"
+                android:src="@drawable/icon_search"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/accountIcon"
+                app:layout_constraintHorizontal_bias="0.862"
+                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
     </LinearLayout>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabRippleColor="@color/white"
-
-        app:tabSelectedTextColor="@color/black"
-        app:tabMode="scrollable"
-        app:tabTextAppearance="@style/tabLayout_text"
-        app:layout_constraintTop_toBottomOf="@id/homeHeader"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:tabIndicator="@null"
-        android:layout_marginTop="5dp"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpagerHome"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tabLayout"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeHeader"
+        app:tabIndicator="@null"
+        app:tabMode="scrollable"
+        app:tabRippleColor="@color/white"
+        app:tabSelectedTextColor="@color/black"
+        app:tabTextAppearance="@style/tabLayout_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

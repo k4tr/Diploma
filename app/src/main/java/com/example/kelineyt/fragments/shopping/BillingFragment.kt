@@ -79,6 +79,9 @@ class BillingFragment : Fragment() {
             findNavController().navigate(R.id.action_billingFragment_to_addressFragment)
         }
 
+        binding.imageCloseBilling.setOnClickListener{
+            findNavController().navigate(R.id.profileFragment)
+        }
         addressAdapter.onClick = {
             selectedAddress = it
             if (!args.payment) {

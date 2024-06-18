@@ -16,6 +16,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.example.kelineyt.R
 import com.example.kelineyt.data.User
 import com.example.kelineyt.databinding.FragmentUserAccountBinding
 import com.example.kelineyt.dialog.setupBottomSheetDialog
@@ -91,7 +92,9 @@ class UserAccountFragment : Fragment() {
                 }
             }
         }
-
+        binding.imageCloseUserAccount.setOnClickListener{
+            findNavController().navigate(R.id.profileFragment)
+        }
         binding.tvUpdatePassword.setOnClickListener {
             setupBottomSheetDialog {
 

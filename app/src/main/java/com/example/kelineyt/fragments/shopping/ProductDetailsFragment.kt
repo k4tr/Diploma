@@ -50,7 +50,6 @@ class ProductDetailsFragment : Fragment() {
     @SuppressLint("ResourceType")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val product = args.product
 
         setupSizesRv()
@@ -107,13 +106,11 @@ class ProductDetailsFragment : Fragment() {
                     is Resource.Loading -> {
                         binding.buttonAddToCart.startAnimation()
                     }
-
                     is Resource.Success -> {
                         binding.buttonAddToCart.revertAnimation()
                         binding.buttonAddToCart.setBackgroundColor(resources.getColor(R.color.black))
 
                     }
-
                     is Resource.Error -> {
                         binding.buttonAddToCart.stopAnimation()
                         Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
@@ -122,7 +119,6 @@ class ProductDetailsFragment : Fragment() {
                 }
             }
         }
-
         binding.apply {
             tvProductName.text = product.name
             tvProductPrice.text = "${product.price} ₽"
@@ -133,12 +129,10 @@ class ProductDetailsFragment : Fragment() {
             if (product.sizes.isNullOrEmpty())
                 tvProductSize.visibility = View.INVISIBLE
         }
-
         viewPagerAdapter.differ.submitList(product.images)
         product.colors?.let { colorsAdapter.differ.submitList(it) }
         product.sizes?.let { sizesAdapter.differ.submitList(it) }
     }
-
     private fun setupViewpager() {
         binding.apply {
             viewPagerProductImages.adapter = viewPagerAdapter
@@ -147,16 +141,13 @@ class ProductDetailsFragment : Fragment() {
     private fun setupColorsRv() {
         binding.rvColors.apply {
             adapter = colorsAdapter
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
     }
-
     private fun setupSizesRv() {
         binding.rvSizes.apply {
             adapter = sizesAdapter
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
     }
 }

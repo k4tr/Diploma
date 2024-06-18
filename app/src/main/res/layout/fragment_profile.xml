@@ -160,33 +160,10 @@
                     android:layout_marginTop="10dp"
                     android:id="@+id/linearTrackOrder">
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_search"
-                        android:layout_gravity="center_vertical"
-                        android:background="@drawable/settings_items_background"
-                        android:backgroundTint="@color/g_gray700"
-                        app:tint="@color/white" />
 
-                    <TextView
-                        android:id="@+id/tvTrackOrders"
-                        style="@style/MediumTextViewThin"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Отследить заказы"
-                        android:textColor="@color/g_gray700"
-                        android:textStyle="bold"
-                        android:layout_marginStart="15dp"
-                        android:layout_gravity="center_vertical"/>
 
-                    <ImageView
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:src="@drawable/ic_arrow"
-                        app:tint="@color/g_blue_gray200"
-                        android:layout_gravity="center_vertical"/>
+
+
                 </LinearLayout>
 
                 <LinearLayout

@@ -15,6 +15,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.kelineyt.R
 import com.example.kelineyt.adapters.HomeViewpagerAdapter
@@ -27,7 +28,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.flow.collectLatest
 import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
-class HomeFragment : Fragment(R.layout.fragment_home) { //хмл с картинкой аккаунта и лайками
+class HomeFragment : Fragment(R.layout.fragment_home) { //хмл с картинкой аккаунта
     private lateinit var binding: FragmentHomeBinding
     private val viewModel by viewModels<HomeViewModel>()
     private lateinit var imageActivityResultLauncher: ActivityResultLauncher<Intent>
@@ -44,7 +45,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) { //хмл с картин
     }
     private fun showUserInformation(data: User) {
         binding.apply {
-            Glide.with(this@HomeFragment).load(data.imagePath).error(ColorDrawable(Color.BLACK)).into(accountIcon)
+            Glide.with(this@HomeFragment).load(data.imagePath).error(ColorDrawable(Color.GRAY)).into(accountIcon)
 
         }
     }
@@ -59,7 +60,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) { //хмл с картин
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.etSearch.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_searchProduct)
+        }
         val categoriesFragments = arrayListOf<Fragment>(
             MainCategoryFragment(),
             ChairFragment(),

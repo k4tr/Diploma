@@ -94,45 +94,6 @@
             app:layout_constraintStart_toStartOf="@id/guidelineLoginLeft"
             app:layout_constraintTop_toBottomOf="@id/edPasswordLogin" />
 
-        <ImageView
-            android:id="@+id/facebookLogin"
-            android:layout_width="23dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/vk"
-            app:layout_constraintStart_toStartOf="@id/guidelineLoginLeft"
-            app:layout_constraintTop_toBottomOf="@id/buttonLoginLogin" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="20dp"
-            android:text="ВКонтакте"
-            android:textColor="@color/g_gray700"
-            app:layout_constraintStart_toEndOf="@+id/facebookLogin"
-            app:layout_constraintTop_toBottomOf="@+id/buttonLoginLogin" />
-
-        <ImageView
-            android:id="@+id/googleLogin"
-            android:layout_width="21dp"
-            android:layout_height="18dp"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/google"
-
-            app:layout_constraintEnd_toEndOf="@id/guidelineLoginRight"
-            app:layout_constraintTop_toBottomOf="@id/buttonLoginLogin" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="4dp"
-            android:text="Google"
-            android:textColor="@color/g_gray700"
-            app:layout_constraintEnd_toStartOf="@+id/googleLogin"
-            app:layout_constraintTop_toBottomOf="@+id/buttonLoginLogin" />
 
         <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/buttonLoginLogin"

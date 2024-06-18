@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kelineyt.R
 import com.example.kelineyt.adapters.BillingProductsAdapter
 import com.example.kelineyt.data.order.OrderStatus
 import com.example.kelineyt.data.order.getOrderStatus
@@ -66,13 +68,15 @@ class OrderDetailFragment : Fragment() {
             }
 
             tvFullName.text = order.address.fullName
-            tvAddress.text = "${order.address.street} ${order.address.city}"
+            tvAddress.text = "${order.address.street} ${order.address.state} ${order.address.city}"
             tvPhoneNumber.text = order.address.phone
 
             tvTotalPrice.text = "${order.totalPrice}₽"
 
         }
-
+        binding.imageCloseOrder.setOnClickListener{
+            findNavController().navigate(R.id.ordersFragment)
+        }
         billingProductsAdapter.differ.submitList(order.products)
     }
 

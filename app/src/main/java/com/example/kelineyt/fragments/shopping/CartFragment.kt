@@ -56,7 +56,9 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
             }
             findNavController().navigate(R.id.action_cartFragment_to_productDetailsFragment, b)
         }
-
+        binding.imageCloseCart.setOnClickListener{
+            findNavController().navigate(R.id.homeFragment)
+        }
         cartAdapter.onPlusClick = {
             viewModel.changeQuantity(it, FirebaseCommon.QuantityChanging.INCREASE)
         }

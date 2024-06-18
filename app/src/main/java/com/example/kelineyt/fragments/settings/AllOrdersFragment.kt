@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kelineyt.R
 import com.example.kelineyt.adapters.AllOrdersAdapter
 import com.example.kelineyt.databinding.FragmentOrdersBinding
 import com.example.kelineyt.util.Resource
@@ -65,7 +66,9 @@ class AllOrdersFragment : Fragment() {
             val action = AllOrdersFragmentDirections.actionOrdersFragmentToOrderDetailFragment(it)
             findNavController().navigate(action)
         }
-
+        binding.imageCloseOrders.setOnClickListener{
+            findNavController().navigate(R.id.profileFragment)
+        }
     }
 
     private fun setupOrdersRv() {
