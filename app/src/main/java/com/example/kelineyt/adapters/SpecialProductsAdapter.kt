@@ -18,8 +18,8 @@ class SpecialProductsAdapter :
         fun bind(product: Product) {
             binding.apply {
                 Glide.with(itemView).load(product.images[0]).into(imageSpecialRvItem)
-                tvSpecialProductName.text = product.name
-                tvSpecialPrdouctPrice.text = product.price.toString()
+//                tvSpecialProductName.text = product.name
+//                tvSpecialPrdouctPrice.text = product.price.toString()
             }
         }
     }

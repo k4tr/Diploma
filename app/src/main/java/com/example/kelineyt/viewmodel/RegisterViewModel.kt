@@ -35,7 +35,7 @@ class RegisterViewModel @Inject constructor(
         // Логика регистрации пользователя
         // Если регистрация успешна или произошла ошибка
         _showToast.value = "Регистрация успешна!"
-        // или
+
         _showToast.value = "Ошибка регистрации!"
     }
     private val _validation = Channel<RegisterFieldsState>()
@@ -50,10 +50,11 @@ class RegisterViewModel @Inject constructor(
                 .addOnSuccessListener {
                     it.user?.let {
                         saveUserInfo(it.uid, user)
-
+                        _showToast.value = "Регистрация успешна!"
                     }
                 }.addOnFailureListener {
                     _register.value = Resource.Error(it.message.toString())
+                    _showToast.value = "Ошибка регистрации!"
                 }
         } else {
             val registerFieldsState = RegisterFieldsState(

@@ -16,6 +16,12 @@
         <argument
             android:name="imagesOfProducts"
             app:argType="com.example.kelineyt.data.Product" />
+        <action
+            android:id="@+id/action_homeFragment_to_productDetailsFragment2"
+            app:destination="@id/productSpecialFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_allProductFragment"
+            app:destination="@id/allProductFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -60,6 +66,15 @@
         android:name="com.example.kelineyt.fragments.shopping.ProductDetailsFragment"
         android:label="ProductDetailsFragment"
         tools:layout="@layout/fragment_product_details">
+        <argument
+            android:name="product"
+            app:argType="com.example.kelineyt.data.Product" />
+    </fragment>
+    <fragment
+        android:id="@+id/productSpecialFragment"
+        tools:layout="@layout/fragment_special_product"
+        android:name="com.example.kelineyt.fragments.shopping.ProductSpecialFragment"
+        android:label="ProductSpecialFragment">
         <argument
             android:name="product"
             app:argType="com.example.kelineyt.data.Product" />
@@ -112,5 +127,15 @@
         <argument
             android:name="order"
             app:argType="com.example.kelineyt.data.order.Order" />
+    </fragment>
+    <fragment
+        android:id="@+id/allProductFragment"
+        android:name="com.example.kelineyt.fragments.shopping.AllProductFragment"
+        android:label="AllProductFragment"
+        tools:layout="@layout/fragment_allproduct"
+        >
+        <action
+            android:id="@+id/action_allProductFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
     </fragment>
 </navigation>

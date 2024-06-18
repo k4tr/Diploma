@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:elevation="0dp"
+    android:layout_height="240dp"
 
     >
 
@@ -27,6 +26,7 @@
 
         <ImageView
             android:id="@+id/img_product"
+            android:layout_marginTop="15dp"
             android:layout_width="126dp"
             android:layout_height="132dp"
             android:paddingStart="5dp"
@@ -62,7 +62,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:background="@color/light_blue"
-                android:src="@drawable/baseline" />
+                 />
 
         </LinearLayout>
 

@@ -21,7 +21,6 @@ import javax.inject.Inject
 class MainCategoryViewModel @Inject constructor(
     private val firestore: FirebaseFirestore
 ) : ViewModel() {
-    private val firebaseDatabase = FirebaseDatabase.getInstance()
     private val _specialProducts = MutableStateFlow<Resource<List<Product>>>(Resource.Unspecified())
     val specialProducts: StateFlow<Resource<List<Product>>> = _specialProducts
     private val _bestDealsProducts =

@@ -60,9 +60,11 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
         setupBestProducts()
         specialProductsAdapter.onClick = {
             val b = Bundle().apply { putParcelable("product",it) }
-          findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment,b)
+          findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment2,b)
         }
-
+        binding.allProducts.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_allProductFragment)
+        }
         bestDealsAdapter.onClick = {
             val b = Bundle().apply { putParcelable("product",it) }
             findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment,b)
